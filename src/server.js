@@ -6,10 +6,11 @@ require('dotenv/config');
 const app = express();
 
 //! Some variables
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3333;
 
 //! Permissions
-//* Waiting...
+app.use(express.json()); //* Allow the server to understand the JSON format request
+app.use(express.urlencoded({ extended: true })); //* Allows us to send files in our requests
 
 //! DataBase
 const databaseUrl = process.env.MONGO_URL;
