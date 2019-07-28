@@ -10,6 +10,6 @@ const FileController = require('./controllers/FileController');
 
 //! routes
 routes.post('/box', BoxController.store);
-routes.post('/files', upload.single('file'), FileController.store);
+routes.post('/box/:id/files', upload.single('file'), FileController.store);
 
 module.exports = routes;
