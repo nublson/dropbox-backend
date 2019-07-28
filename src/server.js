@@ -37,4 +37,4 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 
 //! Listen Ports
-server.listen(process.env.PORT || 3333, () => console.log(`Port is open.`));
+server.listen(process.env.PORT || 3333);
