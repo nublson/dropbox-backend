@@ -8,6 +8,13 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
+//! Real-Time config
+io.on('connection', socket => {
+	socket.on('connectRoom', box => {
+		socket.join(box);
+	});
+});
+
 //! Some variables
 const port = process.env.PORT || 3333;
 
@@ -19,6 +26,13 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp'))); //* Eve
 //! DataBase
 const databaseUrl = process.env.MONGO_URL;
 mongoose.connect(databaseUrl, { useNewUrlParser: true });
+
+//! Middleware
+app.use((req, res, next) => {
+	req.io = io;
+
+	next();
+});
 
 //! Routes
 app.use(require('./routes'));
