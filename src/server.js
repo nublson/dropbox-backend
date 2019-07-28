@@ -17,9 +17,6 @@ io.on('connection', socket => {
 	});
 });
 
-//! Some variables
-const port = process.env.PORT || 3333;
-
 //! Permissions
 app.use(express.json()); //* Allow the server to understand the JSON format request
 app.use(express.urlencoded({ extended: true })); //* Allows us to send files in our requests
@@ -40,4 +37,4 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 
 //! Listen Ports
-server.listen(port, () => console.log(`Port ${port} is open.`));
+server.listen(process.env.PORT || 3333, () => console.log(`Port is open.`));
