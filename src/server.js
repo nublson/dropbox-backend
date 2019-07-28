@@ -24,7 +24,10 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp'))); //* Eve
 
 //! DataBase
 const databaseUrl = process.env.MONGO_URL;
-mongoose.connect(databaseUrl, { useNewUrlParser: true });
+mongoose.connect(
+	'mongodb+srv://theNletter:FernandeZ05@@thenletter-xbk8q.mongodb.net/DropBoxClone?retryWrites=true&w=majority',
+	{ useNewUrlParser: true }
+);
 
 //! Middleware
 app.use((req, res, next) => {
