@@ -5,6 +5,8 @@ require('dotenv/config');
 
 //! Start App
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 //! Some variables
 const port = process.env.PORT || 3333;
@@ -22,4 +24,4 @@ mongoose.connect(databaseUrl, { useNewUrlParser: true });
 app.use(require('./routes'));
 
 //! Listen Ports
-app.listen(port, () => console.log(`Port ${port} is open.`));
+server.listen(port, () => console.log(`Port ${port} is open.`));
