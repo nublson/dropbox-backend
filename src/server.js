@@ -12,7 +12,8 @@ app.use(routes)
 
 connect(dbUrl, {
 	useNewUrlParser: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useCreateIndex: true
 })
 
 app.listen(port, () => console.log(`Port ${port} is open...`))

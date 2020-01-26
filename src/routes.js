@@ -1,5 +1,7 @@
 const routes = require('express').Router()
 
-routes.get('/', (req, res) => res.send('Dropbox Clone!'))
+const BoxController = require('./controllers/BoxController')
+
+routes.post('/boxes', BoxController.store)
 
 module.exports = routes
