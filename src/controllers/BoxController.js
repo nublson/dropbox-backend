@@ -4,7 +4,10 @@ module.exports = {
 	async store(req, res) {
 		const { title } = req.body
 
-		let box = await Box.findOne({ title })
+		let box = await Box.findOne({ title }).populate({
+			path: 'files',
+			options: { sort: { createdAt: -1 } }
+		})
 
 		if (!box) {
 			box = await Box.create({ title })
