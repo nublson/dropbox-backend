@@ -21,7 +21,9 @@ const FileSchema = new Schema(
 )
 
 FileSchema.virtual('url').get(function() {
-	return `http://localhost:3333/files/${encodeURIComponent(this.path)}`
+	const url = process.env.PORT || 'http://localhost:3333'
+
+	return `${url}/files/${encodeURIComponent(this.path)}`
 })
 
 module.exports = model('File', FileSchema)

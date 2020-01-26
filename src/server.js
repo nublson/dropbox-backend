@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const { connect } = require('mongoose')
 const { resolve } = require('path')
 require('dotenv/config')
@@ -8,6 +9,7 @@ const dbUrl = process.env.MONGO_URL
 const routes = require('./routes')
 
 const app = express()
+app.use(cors())
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
